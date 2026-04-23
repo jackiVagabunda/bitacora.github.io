@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bitácora – Bienvenida</title>
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #070707;    /* fondo negro consistente */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', 'Courier New', monospace;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Contenido textual por encima del canvas */
+        .welcome-content {
+            position: relative;
+            z-index: 20;
+            text-align: center;
+            padding: 2rem;
+            max-width: 90%;
+            backdrop-filter: blur(3px);
+            background-color: rgba(0, 0, 0, 0.55);
+            border-radius: 32px;
+            border: 1px solid rgba(200, 200, 200, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: #e0e0e0;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            margin-bottom: 1rem;
+        }
+
+        .subtitulo {
+            font-size: 1.2rem;
+            color: #bbbbbb;
+            margin-bottom: 2rem;
+            border-top: 1px solid #555;
+            border-bottom: 1px solid #555;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            letter-spacing: 2px;
+        }
+
+        /* Botón gris elegante */
+        .btn-bienvenida {
+            display: inline-block;
+            background: transparent;
+            color: #dddddd;
+            font-size: 1.3rem;
+            font-weight: 500;
+            padding: 12px 32px;
+            border: 2px solid #aaaaaa;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            letter-spacing: 2px;
+        }
+
+        .btn-bienvenida:hover {
+            background-color: #aaaaaa;
+            color: #070707;
+            border-color: #ffffff;
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(170,170,170,0.5);
+        }
+
+        /* pequeña animación de entrada */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Ajustes responsivos */
+        @media (max-width: 680px) {
+            h1 { font-size: 2.2rem; }
+            .subtitulo { font-size: 0.9rem; }
+            .btn-bienvenida { font-size: 1rem; padding: 8px 22px; }
+            .welcome-content { width: 85%; padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+<p class="text">
+    <a href="mapaMental.html" target="_blank" rel="noopener noreferrer">
+        <img src="img/parallax/mapaMental.jpg" alt="Mapa Mental" style="width: 1000px;">
+    </a>
+</p>
+
+                <p class="text">
+    <a href="educacion.html" target="_blank" rel="noopener noreferrer">Regresar</a>
+</p>
+
+
+</body>
+</html>

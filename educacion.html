@@ -1,0 +1,487 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bitácora - Pensamientos de viaje</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Hoja de estilos externa -->
+    <link rel="stylesheet" href="stylebitacora.css">
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body>
+
+    <!-- Contenedor del sketch p5.js (parte superior centrada) -->
+    <div id="bitacora-sketch"></div>
+
+    <script>
+        function setup() {
+            let canvas = createCanvas(800, 200);
+            canvas.parent('bitacora-sketch');
+            textAlign(CENTER, CENTER);
+            textSize(48);
+            noStroke();
+        }
+
+        function draw() {
+            background(0);
+            let t = (mouseX / width + mouseY / height) / 2;
+            
+            // Escala de grises: negro, gris medio, gris oscuro
+            let colorNegro = color(0);
+            let colorGrisMedio = color(128);
+            let colorGrisOscuro = color(197);
+            
+            let colorTxt;
+            if (t < 0.5) {
+                let t2 = map(t, 0, 0.5, 0, 1);
+                colorTxt = lerpColor(colorNegro, colorGrisMedio, t2);
+            } else {
+                let t2 = map(t, 0.5, 1, 0, 1);
+                colorTxt = lerpColor(colorGrisMedio, colorGrisOscuro, t2);
+            }
+            
+            fill(colorTxt);
+            text("PENSAMIENTOS DE VIAJE", width/2, height/2);
+        }
+    </script>
+
+    <!-- CONTENIDO PRINCIPAL (bitácora) -->
+    <div class="wrapper">
+        <div class="main">
+            <section class="content">
+                <!-- Parallax 1 -->
+                <div class="parallax img-uno" id="p">
+                    <div class="texto-interior">
+                        <h2>¿Qué es la educación?</h2>
+                    </div>
+                </div>
+                <div class="texto">
+                    <h3>Diversidad de educaciones a lo largo de la historia</h3>
+                    <p>Ahora que estoy transitando la Licenciatura en Educación Comunitaria y DDHH, preguntarme qué es la educación se convierte en una obligación. Eso no significa que no lo haya cuestionado antes. Lo diferente ahora es que la pregunta surge desde el interior de una universidad que forma educadores.<br><br>
+                    Entiendo la educación, como un proceso natural, que permite adquirir y transmitir conocimientos y habilidades. He atravesado distintos tipos de educación. A través de la educación con mi entorno familiar, aprendí a comunicarme, a caminar, a bailar, a cocinar, a ser amorosa y a defenderme. Aprender a escribir y leer sucedió entre mi casa y la escuela. Esta última, como educación formal, porque fui inscrita en una institución educativa donde hacían reportes periódicos y existía un formalismo diferente al de mi casa. Ese es el recuerdo que tengo de mis primeras experiencias educativas. También he adquirido aprendizajes de manera autónoma y autodidacta, conducida por el interés propio. La educación formal que transité por mayor tiempo fue la pública y católica, donde quienes dirigían eran monjas. Es uno de los recuerdos más infelices que he tenido en mi vida. Asimismo, transité la educación no formal, donde habité espacios de diálogo permanente en los que, desde el ejercicio de jóvenes líderes sociales, cuestionábamos las estructuras sociales, el abuso de la policía, el racismo y las dinámicas de poder social.<br><br>
+                    Educación familiar, formal y no formal he recorrido. Acercarme a comprender la palabra educación, sus alcances y contradicciones me anima, por cuanto se da en un espacio donde convergen el saber de docentes, compañeras y compañeros de clase, textos y otras formas de texto que me permitan adquirir herramientas para interpretar y redescubrir el entorno educativo y mi rol como educadora.</p>
+                </div>
+
+                <!-- Parallax 2 -->
+                <div class="parallax img-dos" id="m">
+                    <div class="texto-interpara">
+                        <h2>Diversidad de educaciones a lo largo de la historia</h2>
+                    </div>
+                </div>
+                <div class="texto">
+                    <h3>Sesión 1.</h3>
+
+
+                    <p> ¿Cómo se relacionan estos modelos educativos con las prácticas que existen en mi comunidad?
+                    </p>
+
+                    <br><br>
+
+                    <p> A lo largo de mi historia he identificado tres tipos de educación que han convivido en tensión y también en mezcla: la formal, rígida y memorística del colegio de monjas y del SENA —esa formación bancaria que empujaba a mis compañeros hacia los agroquímicos—; la no formal, que llegó de manos de las propias monjas pero en espacios abiertos, de talleres de arte y diálogo juvenil donde nombrábamos anhelos, molestias y desencajes; y la informal, esa que nace del territorio y del encuentro con otros cuerpos sensibles. La educación popular fue la que realmente me habitó, porque no se trataba de repetir sino de reconocernos entre pares, de preguntarnos juntos qué nos indignaba y qué no encajaba. A diferencia del modelo bancario que acumula información para reproducir órdenes, la educación popular propone un saber que se hace desde la escucha colectiva, desde lo incómodo y lo deseado. Y aunque fui expulsada del colegio por no soportar las misas obligatorias, esa mezcla entre la administración ambiental y las artes —ese cruce que aprendí también en la academia pero que luego desbaraté con otras narrativas— es lo que más ha marcado mi forma de ver, escuchar y habitar. En mi comunidad, esas prácticas de educación popular siguen vivas en los encuentros donde el diálogo no busca desarrollar ni llenar vacíos, sino acompañar procesos sensibles, desobedecer discursos lineales del desarrollo y construir desde lo que nos duele y lo que soñamos.
+                    </p>
+                        
+                        <p class="text">
+    <a href="mapaMental.html" target="_blank" rel="noopener noreferrer">Mapa Mental</a>
+</p>
+
+                <!-- Parallax 3 -->
+                <div class="parallax img-cuatro" id="p">
+                    <div class="texto-interior">
+                        <h2>Educación y sociedad</h2>
+                    </div>
+                </div>
+                <div class="texto">
+                    <h3>Sesión 2.</h3>
+
+                    <p>¿Qué papel juega la educación en los procesos organizativos o comunitarios de mi territorio?</p> <br>
+                      <p> En mi experiencia, la educación que recibí en el colegio de monjas estaba atravesada por estructuras claras: la iglesia, la familia de clase media que podía pagar ese colegio pero no una universidad privada entera, el mercado laboral que espera cuerpos dóciles. El SENA, con su formación bancaria, también respondía a una estructura: formar técnicos para la agroindustria, de ahí que la mayoría de mis compañeros terminaran vendiendo agroquímicos. Esa educación no cuestionaba a quién beneficiaba ese conocimiento. Solo lo repetía. Así la educación reproduce desigualdades: cuando enseña que hay saberes válidos y otros que no, cuando el crédito universitario decide quién se queda y quién se va, cuando la expulsión del colegio por no ir a misa es un castigo a un cuerpo que no se pliega. En mi caso, la desigualdad no fue solo económica —aunque el crédito me expulsó de la Santo Tomás— sino también simbólica: lo que yo aprendía con mis hermanos escuchando Reino Clandestino, grabando cassettes, haciendo rap con baile, eso no contaba como educación. Era "solo" hip hop. Eso es reproducción: hacer que lo que se aprende afuera no valga, para que lo de adentro parezca la única vía.
+<br><br>
+Pero la educación también puede ser herramienta de transformación. No automáticamente. No por decreto. La vi en los talleres de arte que abrían las monjas —paradójicamente, desde el mismo lugar que me castigaba— donde el diálogo sobre anhelos y molestias sí tenía lugar. La vi en la fundación Sula, donde aprender fotografía no era para acumular un título sino para registrar el barrio, para contar con imágenes lo que las palabras no alcanzaban. La vi en los CREA del Idartes, que me catapultaron a Argentina, y en Buenos Aires la vi hecha militancia: educación popular en territorios excluidos, donde ser educadora era también ser estudiante, donde el saber no se depositaba sino que se cocinaba entre todos. La transformación social desde la educación no es un gran discurso. Es poder decir: esto que me pasó —la expulsión, el crédito impagable, el hip hop grabado en cassette— no fue solo una herida, también fue una escuela. Y si yo pude aprender de eso, entonces otras personas también pueden, pero no solas, sino organizándose.
+<br><br>
+Conozco ejemplos concretos de educación en contextos de resistencia o exclusión. El primero es mi propio grupo de rap con mis hermanos: aprender juntos en una casa donde no había recursos para clases de música, usando la radio y el cassette como maestros. Eso es educación en la exclusión. El segundo es la fundación Sula, que operaba en territorios donde la cámara de fotos no llegaba si no era por un proyecto comunitario. El tercero, más reciente, es la militancia en Buenos Aires: educadoras populares en villas, sin presupuesto estatal estable, creando escuela donde el Estado no llegaba o llegaba mal. Y un cuarto, que no quiero olvidar: las mismas monjas que abrían esos talleres de arte. Dentro de una institución que me expulsó, había grietas. La resistencia también se aprende en los intersticios.
+<br><br>
+Y ahora, el papel de la educación en los procesos organizativos o comunitarios de mi territorio. No es un papel decorativo. Es el pegamento. En mi barrio, cuando un grupo de jóvenes se organiza para hacer un mural o un podcast, lo que está pasando es educativo: se aprende a decidir en grupo, a repartir tareas, a resolver conflictos, a usar herramientas técnicas sin manual institucional. La educación popular ahí no es un taller que alguien lleva, es el propio hacer. La organización sin esa dimensión educativa se vuelve líder-centrista o se desarma en la primera crisis. Y al revés: la educación sin organización se queda en buena intención, en taller aislado. Lo que he visto funcionar —en la fundación Sula, en los CREA, en las experiencias de Buenos Aires— es cuando el aprendizaje y la decisión colectiva van de la mano. Por eso en mi territorio la educación formal casi no juega, la no formal juega a ratos, y la popular —esa que nace de la necesidad y se hace entre pares— es la que realmente sostiene. No es bonito decirlo, es así. Las vecinas que aprenden a leer juntas las cartas del banco, los hermanos que se enseñan ritmos, los ex-estudiantes expulsados del sistema que se juntan a compartir lo que saben. Ese es el papel: hacer que la organización no dependa de un salvador externo, sino de la potencia que ya hay en el territorio. Rizomática, otra vez. Sin principio ni fin. Solo conexiones que se van haciendo.
+
+En la fundación Sula, lo educativo en lo comunitario operaba cuando aprendíamos fotografía no para hacer una carrera, sino para contar algo que nos molestaba o que queríamos mostrar. El aprendizaje no estaba separado de la organización: mientras aprendías a usar una cámara, estabas decidiendo con otros qué valía la pena registrar, cómo circularlo, a quién mostrarle. Esa mezcla entre técnica y decisión colectiva es la que sostiene los procesos comunitarios. Sin esa parte educativa, la organización se vacía o se vuelve pura gestión.
+
+En los CREA del Idartes, y antes CLAN, lo educativo aparecía en la formación artística formal e informal, pero también en el hecho de que esos espacios nos catapultaron a otros lugares —en mi caso, Argentina. La educación comunitaria no solo sirve para quedarse en el territorio, sino para saber salir y volver con otras herramientas.
+
+En Buenos Aires, ya militando en educación popular, entendí más claro el papel: la educación en lo comunitario es la que permite que un grupo de vecinos pase de quejarse por un problema a entender cómo funciona ese problema, a distribuirse tareas, a tomar decisiones sin esperar que alguien de afuera venga a resolver.  La dimensión educativa —que puede ser un taller de alfabetización, una asamblea donde se aprende a hablar y escuchar o el rodaje de un documental son otras formas de comunicación. 
+
+En mi territorio hoy, veo que la educación formal no juega casi ningún papel en lo organizativo comunitario. Está ausente o es parte del problema. La educación no formal —talleres de fundaciones, casas culturales, proyectos artísticos— sí juega un papel, pero muchas veces es fragmentario, depende de financiamiento, no siempre se sostiene. La educación popular, en cambio, aparece en los gestos pequeños: la vecina que enseña a otra a leer una carta del banco, el grupo de jóvenes que aprende a grabar un podcast para denunciar el desalojo, los hermanos que se juntan a hacer beats porque la calle los formó antes que cualquier escuela.
+
+El papel concreto, entonces, es este: la educación en los procesos comunitarios permite que la organización no dependa de un líder ni de un experto. Permite que la rabia se convierta en análisis, que el deseo se convierta en método, que la memoria se transmita sin que la escriba una institución. Y sobre todo, permite que cuando una línea se rompe —como cuando me expulsaron del colegio o me quedé sin crédito universitario— el proceso comunitario no se acabe, sino que brote por otro lado. 
+
+                    </p>
+
+                    
+                    <p class="text"><a href="aromasdepaz2.html">Conocer más</a></p>
+                </div>
+                <div class="texto">
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p class="text"><a href="index.html">Conocer más</a></p>
+                </div>
+
+                <!-- Parallax 4 -->
+                <div class="parallax img-tres" id="c">
+                    <div class="texto-interior">
+                        <h2>Diversidad de pedagogías</h2>
+                    </div>
+                </div>
+                <div class="texto">
+                    <h3>Sesión 3.</h3>
+
+                    <p>Hablamos de memoria histórica asociándolo al arraigo, a la posibilidad de relacionarse, de construir conexión entre la experiencia a través del tiempo; siendo pues, un conglomerado de afectividades, sensaciones, colores, sonidos que se establecen donde se reconocen vínculos, historias, legados y elementos materiales que generan un sentido de pertenencia, por el espacio o territorio donde se encuentran las personas.</p>
+                    <mark>aqui aqui</mark>
+                    <p class="text"><a href="index.html">Conocer más</a></p>
+                </div>
+
+
+    <div class="parallax img-tres" id="c">
+                    <div class="texto-interior">
+                        <h2>Pedagogía crítica</h2>
+                    </div>
+                </div>
+                <div class="texto">
+                    <h3>Sesión 4.</h3>
+                    <p>Hablamos de memoria histórica asociándolo al arraigo, a la posibilidad de relacionarse, de construir conexión entre la experiencia a través del tiempo; siendo pues, un conglomerado de afectividades, sensaciones, colores, sonidos que se establecen donde se reconocen vínculos, historias, legados y elementos materiales que generan un sentido de pertenencia, por el espacio o territorio donde se encuentran las personas.</p>
+                    <mark>aqui aqui</mark>
+                    <p class="text"><a href="index.html">Conocer más</a></p>
+                </div>
+
+                
+
+    <div class="parallax img-tres" id="c">
+                    <div class="texto-interior">
+                        <h2>Diversidad de didácticas</h2>
+                    </div>
+                </div>
+                <div class="texto">
+                    <h3>Sesión 5.</h3>
+                    <p>Hablamos de memoria histórica asociándolo al arraigo, a la posibilidad de relacionarse, de construir conexión entre la experiencia a través del tiempo; siendo pues, un conglomerado de afectividades, sensaciones, colores, sonidos que se establecen donde se reconocen vínculos, historias, legados y elementos materiales que generan un sentido de pertenencia, por el espacio o territorio donde se encuentran las personas.</p>
+                    <mark>aqui aqui</mark>
+                    <p class="text"><a href="index.html">Conocer más</a></p>
+                </div>
+
+
+    <div class="parallax img-tres" id="c">
+                    <div class="texto-interior">
+                        <h2>Estrategias didácticas para el cambio social</h2>
+                    </div>
+                </div>
+                <div class="texto">
+                    <h3>Sesión 6.</h3>
+                    <p>Hablamos de memoria histórica asociándolo al arraigo, a la posibilidad de relacionarse, de construir conexión entre la experiencia a través del tiempo; siendo pues, un conglomerado de afectividades, sensaciones, colores, sonidos que se establecen donde se reconocen vínculos, historias, legados y elementos materiales que generan un sentido de pertenencia, por el espacio o territorio donde se encuentran las personas.</p>
+                    <mark>aqui aqui</mark>
+                    <p class="text"><a href="index.html">Conocer más</a></p>
+                </div>
+                
+
+    <div class="parallax img-tres" id="c">
+                    <div class="texto-interior">
+                        <h2>Sistematización de experiencias
+</h2>
+                    </div>
+                </div>
+                <div class="texto">
+                    <h3>Sesión 7.</h3>
+                    <p>Hablamos de memoria histórica asociándolo al arraigo, a la posibilidad de relacionarse, de construir conexión entre la experiencia a través del tiempo; siendo pues, un conglomerado de afectividades, sensaciones, colores, sonidos que se establecen donde se reconocen vínculos, historias, legados y elementos materiales que generan un sentido de pertenencia, por el espacio o territorio donde se encuentran las personas.</p>
+                    <mark>aqui aqui</mark>
+                    <p class="text"><a href="index.html">Conocer más</a></p>
+                </div>
+                
+                
+
+    <div class="parallax img-tres" id="c">
+                    <div class="texto-interior">
+                        <h2>Reflexión final del viaje</h2>
+                    </div>
+                </div>
+                <div class="texto">
+                    <h3>Sesión 8.</h3>
+                    <p>Hablamos de memoria histórica asociándolo al arraigo, a la posibilidad de relacionarse, de construir conexión entre la experiencia a través del tiempo; siendo pues, un conglomerado de afectividades, sensaciones, colores, sonidos que se establecen donde se reconocen vínculos, historias, legados y elementos materiales que generan un sentido de pertenencia, por el espacio o territorio donde se encuentran las personas.</p>
+                    <mark>aqui aqui</mark>
+                    <p class="text"><a href="index.html">Conocer más</a></p>
+                </div>
+                
+
+    <div class="parallax img-tres" id="c">
+                    <div class="texto-interior">
+                        <h2>xxxxx</h2>
+                    </div>
+                </div>
+                <div class="texto">
+                    <h3>Reflexión final.</h3>
+
+                    <p> xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        X
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </p>
+                    <mark>aqui aqui</mark>
+                    <p class="text"><a href="index.html">Conocer más</a></p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- FOOTER con franja de grises cambiantes y datos solicitados -->
+    <!-- FOOTER con franja de grises cambiantes y datos solicitados (sin la sección de escala de grises) -->
+
+
+<!-- FOOTER con información institucional completa -->
+<footer>
+    <div class="footer-top" id="footerGrises">
+        <div class="container">
+            <div class="row">
+                <!-- Columna 1: Datos de desarrollo -->
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <h4><i class="fas fa-pencil-alt"></i> Desarrollo</h4>
+                    <p>
+                        <strong>Estudiante:</strong> Jacqueline Gómez Castellanos<br>
+                        <strong>Seminario:</strong> Seminario de Educaciones, Pedagogías y Didácticas<br>
+                        <strong>Docente:</strong> Julie Benavides Melo <br>
+                        <strong>Bitácora:</strong> "Bitácora del Camino: tránsitos y xxxxx"<br>
+                        <strong>Símbolo:</strong> 🕸️ (Rizoma)
+                    </p>
+                </div>
+                <!-- Columna 2: Institución y ubicación -->
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <h4><i class="fas fa-university"></i> Universidad Pedagógica Nacional</h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-building"></i> Facultad de Educación</li>
+                        <li><i class="fas fa-book"></i> Departamento de Psicopedagogía</li>
+                        <li><i class="fas fa-graduation-cap"></i> Licenciatura en Educación Comunitaria con énfasis en Derechos Humanos</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Profesionalización Bogotá</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia</li>
+                        <li><i class="fas fa-road"></i> Viaje pedagógico: transitar + bitácora</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Fila inferior con crédito dinámico -->
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <hr>
+                    <p class="mb-0"><i class="fas fa-feather-alt"></i> Bitácora interactiva – xxxxxxx</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Enredaderas animadas en escala de grises (dentro del borde blanco) -->
+<script>
+    (function() {
+        const vineSketch = function(p) {
+            // Función para obtener el padding actual del body (10px por defecto)
+            function getPadding() {
+                let bodyStyle = getComputedStyle(document.body);
+                return parseInt(bodyStyle.paddingLeft) || 10;
+            }
+            
+            let PADDING = getPadding();
+            let leftX, rightX;
+            
+            const MAX_LENGTH = 300;      // longitud máxima visible
+            const STEM_THICK = 2;
+            const LEAF_SIZE = 7;
+            const FLOWER_SIZE = 8;
+            
+            let progress = 0;
+            let speed = 0.005;
+            
+            // Tonos de gris
+            const GRIS_TALLO = 80;        // gris oscuro para el tallo
+            const GRIS_HOJA = 150;        // gris medio para las hojas
+            const GRIS_FLOR = 220;        // gris claro para los pétalos
+            const GRIS_CENTRO = 100;      // gris medio oscuro para el centro de la flor
+            
+            p.setup = function() {
+                let canvas = p.createCanvas(p.windowWidth, p.windowHeight);
+                canvas.style('position', 'fixed');
+                canvas.style('top', '0');
+                canvas.style('left', '0');
+                canvas.style('pointer-events', 'none');
+                canvas.style('z-index', '10001');
+                p.clear();
+                p.noStroke();
+                
+                PADDING = getPadding();
+                leftX = PADDING + 2;
+                rightX = p.windowWidth - PADDING - 2;
+            };
+            
+            p.draw = function() {
+                p.clear();
+                
+                PADDING = getPadding();
+                leftX = PADDING + 2;
+                rightX = p.windowWidth - PADDING - 2;
+                
+                progress += speed;
+                if (progress >= 1) progress = 0;
+                let growth = easeOutCubic(progress);
+                
+                let totalHeight = p.windowHeight;
+                let currentLength = MAX_LENGTH * growth;
+                
+                // Enredadera izquierda (nace arriba, crece hacia abajo)
+                drawVine(leftX, PADDING, currentLength, totalHeight - PADDING, true);
+                
+                // Enredadera derecha (nace abajo, crece hacia arriba)
+                drawVine(rightX, totalHeight - PADDING, currentLength, totalHeight - PADDING, false);
+            };
+            
+            function drawVine(startX, startY, length, maxSpan, goingDown) {
+                if (length <= 0) return;
+                let endY;
+                if (goingDown) {
+                    endY = p.min(startY + length, startY + maxSpan);
+                } else {
+                    endY = p.max(startY - length, startY - maxSpan);
+                }
+                
+                // Tallo en gris
+                p.stroke(GRIS_TALLO);
+                p.strokeWeight(STEM_THICK);
+                p.noFill();
+                
+                let steps = 20;
+                let prevX = startX;
+                let prevY = startY;
+                for (let i = 1; i <= steps; i++) {
+                    let t = i / steps;
+                    let y = p.lerp(startY, endY, t);
+                    let offset = p.sin(t * p.PI * 3) * 3;
+                    let x = startX + offset;
+                    p.line(prevX, prevY, x, y);
+                    prevX = x;
+                    prevY = y;
+                }
+                
+                // Hojas en gris medio
+                let numLeaves = p.floor(length / 12);
+                for (let i = 1; i <= numLeaves; i++) {
+                    let t = i / numLeaves;
+                    let y = p.lerp(startY, endY, t);
+                    let offsetX = p.sin(t * p.PI * 3) * 4;
+                    let x = startX + offsetX;
+                    let side = (i % 2 === 0) ? -1 : 1;
+                    drawLeaf(x, y, side * LEAF_SIZE, t, GRIS_HOJA);
+                }
+                
+                // Flores en gris claro (aparecen cuando ha crecido más del 40%)
+                if (progress > 0.4) {
+                    let numFlowers = p.floor(length / 25);
+                    for (let i = 1; i <= numFlowers; i++) {
+                        let t = i / numFlowers;
+                        if (t > 0.6) {
+                            let y = p.lerp(startY, endY, t);
+                            let offsetX = p.sin(t * p.PI * 3) * 4;
+                            let x = startX + offsetX;
+                            drawFlower(x, y, FLOWER_SIZE * (0.8 + 0.4 * p.sin(p.frameCount * 0.05 + i)), GRIS_FLOR, GRIS_CENTRO);
+                        }
+                    }
+                }
+            }
+            
+            function drawLeaf(x, y, sizeX, phase, grayTone) {
+                p.push();
+                p.translate(x, y);
+                p.rotate(p.sin(phase * p.PI * 2) * 0.5);
+                p.fill(grayTone);
+                p.noStroke();
+                p.ellipse(0, 0, p.abs(sizeX), LEAF_SIZE * 0.6);
+                // Vena central en gris más oscuro
+                p.stroke(GRIS_TALLO);
+                p.strokeWeight(0.5);
+                p.line(0, 0, sizeX * 0.6, 0);
+                p.pop();
+            }
+            
+            function drawFlower(x, y, size, petalGray, centerGray) {
+                p.push();
+                p.translate(x, y);
+                p.noStroke();
+                // Pétalos en gris claro
+                p.fill(petalGray);
+                for (let angle = 0; angle < p.TWO_PI; angle += p.PI / 4) {
+                    let petalX = p.cos(angle) * size * 0.5;
+                    let petalY = p.sin(angle) * size * 0.5;
+                    p.ellipse(petalX, petalY, size * 0.6, size * 0.5);
+                }
+                // Centro en gris medio
+                p.fill(centerGray);
+                p.ellipse(0, 0, size * 0.5, size * 0.5);
+                // Detalles centrales en gris oscuro
+                p.fill(GRIS_TALLO);
+                p.ellipse(-1, -1, size * 0.2, size * 0.2);
+                p.ellipse(1, 1, size * 0.2, size * 0.2);
+                p.pop();
+            }
+            
+            function easeOutCubic(t) {
+                return 1 - Math.pow(1 - t, 3);
+            }
+            
+            p.windowResized = function() {
+                p.resizeCanvas(p.windowWidth, p.windowHeight);
+                PADDING = getPadding();
+                leftX = PADDING + 2;
+                rightX = p.windowWidth - PADDING - 2;
+            };
+        };
+        
+        window.addEventListener('load', () => {
+            new p5(vineSketch);
+        });
+    })();
+</script>
+
+    <!-- Script para el fondo dinámico en grises del footer -->
+    <script>
+        (function() {
+            let footerDiv = document.getElementById('footerGrises');
+            if (!footerDiv) return;
+            let step = 0;
+            const speed = 0.02;
+            function updateGrayScale() {
+                let gray = Math.floor(127 + 127 * Math.sin(step));
+                footerDiv.style.backgroundColor = `rgb(${gray}, ${gray}, ${gray})`;
+                if (gray < 128) {
+                    footerDiv.style.color = "#f8f9fa";
+                } else {
+                    footerDiv.style.color = "#212529";
+                    let hrElements = footerDiv.querySelectorAll('hr');
+                    hrElements.forEach(hr => hr.style.backgroundColor = "rgba(0,0,0,0.2)");
+                }
+                step += speed;
+                requestAnimationFrame(updateGrayScale);
+            }
+            updateGrayScale();
+        })();
+    </script>
+</body>
+</html>

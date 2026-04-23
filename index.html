@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bitácora – Bienvenida</title>
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #070707;    /* fondo negro consistente */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', 'Courier New', monospace;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Contenido textual por encima del canvas */
+        .welcome-content {
+            position: relative;
+            z-index: 20;
+            text-align: center;
+            padding: 2rem;
+            max-width: 90%;
+            backdrop-filter: blur(3px);
+            background-color: rgba(0, 0, 0, 0.55);
+            border-radius: 32px;
+            border: 1px solid rgba(200, 200, 200, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: #e0e0e0;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            margin-bottom: 1rem;
+        }
+
+        .subtitulo {
+            font-size: 1.2rem;
+            color: #bbbbbb;
+            margin-bottom: 2rem;
+            border-top: 1px solid #555;
+            border-bottom: 1px solid #555;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            letter-spacing: 2px;
+        }
+
+        /* Botón gris elegante */
+        .btn-bienvenida {
+            display: inline-block;
+            background: transparent;
+            color: #dddddd;
+            font-size: 1.3rem;
+            font-weight: 500;
+            padding: 12px 32px;
+            border: 2px solid #aaaaaa;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            letter-spacing: 2px;
+        }
+
+        .btn-bienvenida:hover {
+            background-color: #aaaaaa;
+            color: #070707;
+            border-color: #ffffff;
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(170,170,170,0.5);
+        }
+
+        /* pequeña animación de entrada */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Ajustes responsivos */
+        @media (max-width: 680px) {
+            h1 { font-size: 2.2rem; }
+            .subtitulo { font-size: 0.9rem; }
+            .btn-bienvenida { font-size: 1rem; padding: 8px 22px; }
+            .welcome-content { width: 85%; padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenido de bienvenida (visible por encima de las enredaderas) -->
+    <div class="welcome-content">
+        <h1>BITÁCORA DEL CAMINO</h1>
+        
+        <a href="educacion.html" class="btn-bienvenida">°‧ 𓆝 𓆟 𓆞 ·｡Bienvenida es tu visita°‧ 𓆝 𓆟 𓆞 ·｡</a>
+        <!-- ↑ CAMBIA "principal.html" por la ruta de tu página principal (ej: bitacora.html, index2.html) -->
+    </div>
+
+
+
+    
+
+    <!-- Script de enredaderas en escala de grises, cubriendo TODA la pantalla (sin padding) -->
+    <script>
+        (function() {
+            const vineSketch = function(p) {
+                // No hay padding exterior, las enredaderas crecen de borde a borde
+                let leftX, rightX;
+                const MAX_LENGTH = 400;      // longitud máxima (más largas para cubrir bien)
+                const STEM_THICK = 2.5;
+                const LEAF_SIZE = 8;
+                const FLOWER_SIZE = 9;
+                
+                let progress = 0;
+                let speed = 0.0045;          // crecimiento lento y armónico
+                
+                // Tonos de gris (misma paleta)
+                const GRIS_TALLO = 70;
+                const GRIS_HOJA = 140;
+                const GRIS_FLOR = 210;
+                const GRIS_CENTRO = 90;
+                
+                p.setup = function() {
+                    let canvas = p.createCanvas(p.windowWidth, p.windowHeight);
+                    canvas.style('position', 'fixed');
+                    canvas.style('top', '0');
+                    canvas.style('left', '0');
+                    canvas.style('pointer-events', 'none');  // permite clicar el botón
+                    canvas.style('z-index', '10');
+                    p.clear();
+                    p.noStroke();
+                    
+                    leftX = 15;
+                    rightX = p.windowWidth - 15;
+                };
+                
+                p.draw = function() {
+                    p.clear();
+                    
+                    // Actualizar X por si cambia el ancho
+                    leftX = 15;
+                    rightX = p.windowWidth - 15;
+                    
+                    progress += speed;
+                    if (progress >= 1) progress = 0;
+                    let growth = easeOutCubic(progress);
+                    
+                    let totalHeight = p.windowHeight;
+                    let currentLength = MAX_LENGTH * growth;
+                    
+                    // Enredadera izquierda: nace arriba (y=0) y crece hacia abajo
+                    drawVine(leftX, 0, currentLength, totalHeight, true);
+                    
+                    // Enredadera derecha: nace abajo (y=totalHeight) y crece hacia arriba
+                    drawVine(rightX, totalHeight, currentLength, totalHeight, false);
+                };
+                
+                // mismas funciones de dibujo (ligeramente optimizadas)
+                function drawVine(startX, startY, length, maxHeight, goingDown) {
+                    if (length <= 0) return;
+                    let endY;
+                    if (goingDown) {
+                        endY = p.min(startY + length, maxHeight);
+                    } else {
+                        endY = p.max(startY - length, 0);
+                    }
+                    
+                    p.stroke(GRIS_TALLO);
+                    p.strokeWeight(STEM_THICK);
+                    p.noFill();
+                    
+                    let steps = 25;
+                    let prevX = startX;
+                    let prevY = startY;
+                    for (let i = 1; i <= steps; i++) {
+                        let t = i / steps;
+                        let y = p.lerp(startY, endY, t);
+                        let offset = p.sin(t * p.PI * 3.5) * 4;  // curva más orgánica
+                        let x = startX + offset;
+                        p.line(prevX, prevY, x, y);
+                        prevX = x;
+                        prevY = y;
+                    }
+                    
+                    let numLeaves = p.floor(length / 11);
+                    for (let i = 1; i <= numLeaves; i++) {
+                        let t = i / numLeaves;
+                        let y = p.lerp(startY, endY, t);
+                        let offsetX = p.sin(t * p.PI * 3) * 5;
+                        let x = startX + offsetX;
+                        let side = (i % 2 === 0) ? -1 : 1;
+                        drawLeaf(x, y, side * LEAF_SIZE, t, GRIS_HOJA);
+                    }
+                    
+                    if (progress > 0.35) {
+                        let numFlowers = p.floor(length / 28);
+                        for (let i = 1; i <= numFlowers; i++) {
+                            let t = i / numFlowers;
+                            if (t > 0.55) {
+                                let y = p.lerp(startY, endY, t);
+                                let offsetX = p.sin(t * p.PI * 3) * 5;
+                                let x = startX + offsetX;
+                                drawFlower(x, y, FLOWER_SIZE * (0.7 + 0.4 * p.sin(p.frameCount * 0.04 + i)), GRIS_FLOR, GRIS_CENTRO);
+                            }
+                        }
+                    }
+                }
+                
+                function drawLeaf(x, y, sizeX, phase, grayTone) {
+                    p.push();
+                    p.translate(x, y);
+                    p.rotate(p.sin(phase * p.PI * 2) * 0.6);
+                    p.fill(grayTone);
+                    p.noStroke();
+                    p.ellipse(0, 0, p.abs(sizeX), LEAF_SIZE * 0.65);
+                    p.stroke(GRIS_TALLO);
+                    p.strokeWeight(0.7);
+                    p.line(0, 0, sizeX * 0.6, 0);
+                    p.pop();
+                }
+                
+                function drawFlower(x, y, size, petalGray, centerGray) {
+                    p.push();
+                    p.translate(x, y);
+                    p.noStroke();
+                    p.fill(petalGray);
+                    for (let angle = 0; angle < p.TWO_PI; angle += p.PI / 4) {
+                        let petalX = p.cos(angle) * size * 0.55;
+                        let petalY = p.sin(angle) * size * 0.55;
+                        p.ellipse(petalX, petalY, size * 0.65, size * 0.55);
+                    }
+                    p.fill(centerGray);
+                    p.ellipse(0, 0, size * 0.5, size * 0.5);
+                    p.fill(GRIS_TALLO);
+                    p.ellipse(-1.5, -1.5, size * 0.22, size * 0.22);
+                    p.ellipse(1.5, 1.5, size * 0.22, size * 0.22);
+                    p.pop();
+                }
+                
+                function easeOutCubic(t) {
+                    return 1 - Math.pow(1 - t, 3);
+                }
+                
+                p.windowResized = function() {
+                    p.resizeCanvas(p.windowWidth, p.windowHeight);
+                    leftX = 15;
+                    rightX = p.windowWidth - 15;
+                };
+            };
+            
+            window.addEventListener('load', () => {
+                new p5(vineSketch);
+            });
+        })();
+    </script>
+</body>
+</html>
